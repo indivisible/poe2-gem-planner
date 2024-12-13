@@ -45,6 +45,10 @@
             you will have to generate and share the URL again.
           </p>
           <p>
+            You can reorder skills and move supports between them by drag and
+            dropping the three-line handles.
+          </p>
+          <p>
             Some limitations:
           </p>
           <ul>
@@ -53,12 +57,15 @@
             <li>Skill attribute requirements and spirit costs are not tracked</li>
             <li>Since all data is saved into the URL, you can't leave long notes.
               Also the generated URLs will be super long, and if it gets too long it won't work!</li>
+            <li>It does not check for duplicate gems.</li>
+            <li>You can add more skills and supports than is actually possible in game.</li>
             <li>Yes, there is a skill called Unleash, and also a support gem called Unleash.</li>
             <li>The UX is bad and the UI is ugly. I know.</li>
           </ul>
           <p>
             You can try to contact tobaccoroad on discord if you find a bug not
-            mentioned here.
+            mentioned here, or maybe check the <a href="https://github.com/indivisible/poe2-gem-planner"
+              target="_blank">code on GitHub</a> and fix it yourself.
           </p>
         </div>
       </div>
