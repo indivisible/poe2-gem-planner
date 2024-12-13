@@ -73,7 +73,7 @@
         </h3>
       </div>
       <div v-if="!enableNoteEditor">
-        <pre>{{ state.notes || '(no notes)' }}</pre>
+        <pre class="build-notes">{{ state.notes || '(no notes)' }}</pre>
         <button @click="startEditNotes">📝 Edit notes</button>
       </div>
       <div v-else class="notepad">
@@ -315,6 +315,11 @@ ul.support-group li {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  max-width: 100%;
+}
+
+.summary>* {
+  max-width: 100%;
 }
 
 .button-bar {
@@ -351,11 +356,19 @@ ul.support-group li {
   cursor: pointer;
 }
 
-.help-text > * {
+.help-text>* {
   padding-bottom: 1em;
 }
 
-.help-text > p {
+.help-text>p {
   text-indent: 1em;
+}
+
+.build-notes {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 15px;
+  max-width: 100%;
 }
 </style>
