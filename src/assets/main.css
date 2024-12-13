@@ -1,0 +1,52 @@
+@import './base.css';
+
+#app {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+input[type="text"] {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background-soft);
+  color: var(--color-text);
+}
+
+input[type="text"]:hover {
+  border-color: var(--color-border-hover);
+}
+
+button {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background-soft);
+  color: var(--color-text);
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--color-border-hover);
+}
+
+button:active {
+  background-color: var(--color-background-mute);
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+.disabled {
+  background-color: var(--color-background-mute);
+}
