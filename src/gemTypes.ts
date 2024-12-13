@@ -84,15 +84,6 @@ export async function encodeState(state: EditorState) {
   return "1" + await blobToBase64(raw)
 }
 
-function encodeGem(skill: Skill | SkillSupport) {
-  const chunk = new ArrayBuffer(3)
-  const dw = new DataView(chunk)
-  dw.setInt8(0, skill.enabled ? 1 : 0)
-  const gemId = skill.gem?.id || 0
-  dw.setInt16(1, gemId)
-  return chunk
-}
-
 function decodeGem(gems: GemData, view: DataView, pos: number) {
   const enabled = !!view.getInt8(pos)
   const gemId = view.getInt16(pos + 1)
@@ -329,29 +320,6 @@ class BitIntegerWriter {
       this.bitPos = 0
     }
   }
-}
-
-async function encodeStateSimple(state: EditorState) {
-  // format "0"
-  if (state.skills.length >= 256) {
-    throw "wow that's way too many skills"
-  }
-  const encoder = new TextEncoder()
-  const chunks: (ArrayBuffer | Uint8Array)[] = []
-  chunks.push(new Uint8Array([state.skills.length]))
-  for (const skill of state.skills) {
-    if (skill.label.length >= 256) throw "too long label"
-    chunks.push(new Uint8Array([skill.label.length]))
-    const encoded = encoder.encode(skill.label)
-    chunks.push(encoded)
-
-    chunks.push(encodeGem(skill))
-    chunks.push(new Uint8Array([skill.supports.length]))
-    for (const support of skill.supports) {
-      chunks.push(encodeGem(support))
-    }
-  }
-  return await compress(new Blob(chunks))
 }
 
 async function decodeStateV0(gems: GemData, raw: Uint8Array): Promise<EditorState> {
