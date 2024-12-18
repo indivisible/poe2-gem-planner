@@ -165,7 +165,7 @@ import GemLine from './GemLine.vue';
 import draggable from 'vuedraggable'
 
 const allMainGems = computed<Gem[]>(() => {
-  const res = Array.from(props.gemData.values()).filter(gem => !gem.categories.includes("support"))
+  const res = Array.from(props.gemData.values()).filter(gem => !gem.tags.includes("Support"))
   return sortGems(res)
 })
 
@@ -179,7 +179,7 @@ function numAttr(attr: string) {
   for (const skill of state.skills) {
     if (!skill.enabled) continue
     for (const support of skill.supports) {
-      if (!support.enabled || !support.gem || !support.gem.categories.includes("support")) continue
+      if (!support.enabled || !support.gem || !support.gem.tags.includes("Support")) continue
       if (support.gem.type_basic == typeBasic)
         count++;
     }

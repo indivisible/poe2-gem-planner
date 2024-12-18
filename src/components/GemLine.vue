@@ -48,7 +48,7 @@ const gemColorString = computed(() => gemColors[model.value.gem?.type_basic || '
 const gemTypeString = computed<string>(() => {
   if (model.value.gem) {
     if (model.value.gem.categories.includes("spirit")) return "Spirit"
-    if (model.value.gem.categories.includes("support")) return "Support"
+    if (model.value.gem.tags.includes("Support")) return "Support"
     // probably?
     return "Skill"
   }
@@ -70,12 +70,12 @@ const gemChoices = computed<Gem[]>(() => {
 function supportsFor(skill: Skill): Gem[] {
   const res: Gem[] = [];
   let supportsOnly = true
-  if (skill.gem && skill.gem.categories.includes("meta")) {
+  if (skill.gem && skill.gem.tags.includes("Meta")) {
     supportsOnly = false
   }
   for (const gem of gemData.values()) {
-    if (gem.categories.includes("meta")) continue
-    if (!supportsOnly || gem.categories.includes("support")) {
+    if (gem.tags.includes("Meta")) continue
+    if (!supportsOnly || gem.tags.includes("Support")) {
       res.push(gem)
     }
   }

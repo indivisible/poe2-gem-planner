@@ -130,7 +130,7 @@ def parse_gems(path: Path):
     categories = {
         GemBasicCategory.SKILL: "SkillGemsGem",
         GemBasicCategory.SUPPORT: "SupportGemsGem",
-        GemBasicCategory.META: "MetaSkillGemGem",
+        # GemBasicCategory.META: "MetaSkillGemGem",
         GemBasicCategory.SPIRIT: "SpiritGemsGem",
     }
     for name, tab_id in categories.items():
